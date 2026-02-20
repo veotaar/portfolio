@@ -1,0 +1,29 @@
+---
+
+interface Props {
+	/** HTML-entity encoded email address */
+	email: string;
+	/** Button label text */
+	label: string;
+	/** CSS classes on the <a> element */
+	class?: string;
+	/** aria-label override (defaults to label) */
+	ariaLabel?: string;
+}
+
+const {
+	email,
+	label,
+	class: className = "btn btn-primary",
+	ariaLabel,
+} = Astro.props;
+
+// Mail envelope SVG icon (inline string so it survives set:html)
+const mailSvg = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>`;
+
+// Build the full anchor as a raw HTML string.
+// `email` is already HTML-entity encoded (e.g. &#101;&#120;...).
+const html = `<a href="mailto:${email}" class="${className}" aria-label="${ariaLabel ?? label}">${mailSvg}${label}</a>`;
+---
+
+<Fragment set:html={html} />

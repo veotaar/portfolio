@@ -1,0 +1,50 @@
+---
+import type { OtherProject } from "../data/portfolio";
+import OtherProjectItem from "./OtherProjectItem.astro";
+
+interface Props {
+	projects: OtherProject[];
+}
+
+const { projects } = Astro.props;
+---
+
+<section class="other-projects section" id="other-projects">
+	<div class="container">
+		<h2 class="other-projects__title">Other Projects</h2>
+		<p class="other-projects__subtitle">More things I've built and contributed to.</p>
+		<div class="other-projects__list">
+			{projects.map((project) => (
+				<OtherProjectItem
+					name={project.name}
+					tags={project.tags}
+					description={project.description}
+					details={project.details}
+					githubUrl={project.githubUrl}
+					liveUrl={project.liveUrl}
+				/>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.other-projects__title {
+		font-size: 1.75rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+	}
+
+	.other-projects__subtitle {
+		margin-top: 0.5rem;
+		color: var(--text-muted);
+		font-size: 0.9375rem;
+	}
+
+	.other-projects__list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		margin-top: 2rem;
+	}
+</style>

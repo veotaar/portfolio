@@ -1,11 +1,98 @@
 ---
-import Welcome from "../components/Welcome.astro";
+// ============================================================
+// PROJECT SCREENSHOTS
+// ============================================================
+import p1s1 from "../assets/projects/project-1/01.png";
+import p1s2 from "../assets/projects/project-1/02.png";
+import p1s3 from "../assets/projects/project-1/03.png";
+import p1s4 from "../assets/projects/project-1/04.png";
+import p1s5 from "../assets/projects/project-1/05.png";
+import p1s6 from "../assets/projects/project-1/06.png";
+import p1s7 from "../assets/projects/project-1/07.png";
+import p1s8 from "../assets/projects/project-1/08.png";
+import p2s1 from "../assets/projects/project-2/01.png";
+import p2s2 from "../assets/projects/project-2/02.png";
+import p2s3 from "../assets/projects/project-2/03.png";
+import p3s1 from "../assets/projects/project-3/01.png";
+import p3s2 from "../assets/projects/project-3/02.png";
+import p3s3 from "../assets/projects/project-3/03.png";
+import p3s4 from "../assets/projects/project-3/04.png";
+import p3s5 from "../assets/projects/project-3/06.png";
+import p3s6 from "../assets/projects/project-3/07.png";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import OtherProjects from "../components/OtherProjects.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { otherProjects, projects, siteData } from "../data/portfolio";
 import Layout from "../layouts/Layout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const project1Images = [p1s1, p1s2, p1s3, p1s4, p1s5, p1s6, p1s7, p1s8];
+const project2Images = [p2s1, p2s2, p2s3];
+const project3Images = [p3s1, p3s2, p3s3, p3s4, p3s5, p3s6];
+
+const projectImages = [project1Images, project2Images, project3Images];
 ---
 
-<Layout>
-  <Welcome />
+<Layout title={siteData.title} description={siteData.description}>
+	<Header name={siteData.name} resumePath={siteData.resumePath} />
+
+	<main>
+		<Hero
+			name={siteData.name}
+			description={siteData.description}
+			email={siteData.email}
+			githubUrl={siteData.githubUrl}
+		/>
+
+		<section class="projects section" id="projects">
+			<div class="container">
+				<h2 class="projects__title">Projects</h2>
+				<p class="projects__subtitle"><strong>Guest logins</strong> available on live demos.</p>
+				<div class="projects__grid">
+					{projects.map((project, i) => (
+						<ProjectCard
+							name={project.name}
+							tags={project.tags}
+							description={project.description}
+							details={project.details}
+							images={projectImages[i] ?? []}
+							githubUrl={project.githubUrl}
+							liveUrl={project.liveUrl}						aboveFold={i === 0}						/>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<OtherProjects projects={otherProjects} />
+	</main>
+
+	<Footer
+		email={siteData.email}
+		githubUrl={siteData.githubUrl}
+		linkedinUrl={siteData.linkedinUrl}
+		resumePath={siteData.resumePath}
+		name={siteData.name}
+	/>
 </Layout>
+
+<style>
+	.projects__title {
+		font-size: 1.75rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+	}
+
+	.projects__subtitle {
+		margin-top: 0.5rem;
+		color: var(--text-muted);
+		font-size: 0.9375rem;
+	}
+
+	.projects__grid {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		margin-top: 2rem;
+	}
+</style>
