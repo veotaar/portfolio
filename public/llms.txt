@@ -1,0 +1,24 @@
+# Yalcincan Ulus
+
+> Full-stack web developer based in Turkey.
+
+This is the personal portfolio of Yalcincan Ulus, a full-stack web developer with experience building TypeScript-based web applications using modern frameworks and tools.
+
+## Featured Projects
+
+- [Social Media Platform](https://github.com/veotaar/social): Full-stack social media app built as a Turborepo monorepo with a Bun backend and React frontend. Features image uploads (MinIO S3), real-time WebSocket notifications, cursor-based feeds, and authentication via Better Auth.
+
+- [Messaging App](https://github.com/veotaar/messaging-app-api): Real-time messaging application with JWT auth, friend system, and live WebSocket chat (Socket.IO). Built with Node.js/Express (migrated to Bun), React, MongoDB, and TanStack Router.
+
+- [Blog Platform](https://github.com/veotaar/blog-api): Blog platform with a REST API, public-facing blog, and an admin CMS across three separate apps. Features JWT + RBAC, CI/CD with Docker and GitHub Actions.
+
+## Other Projects
+
+- [Multiplayer Location Guessing Game](https://github.com/veotaar/guess-the-country-prototype): Multiplayer geography guessing game played through a Discord bot. Over 1,400 games and 27,000+ guesses played. Uses MongoDB and D3.js.
+
+- [GeoGuessr Account Status Checker](https://github.com/veotaar/geo-polis): Discord bot that monitors GeoGuessr accounts for ban status using BullMQ, SQLite, and Hono.
+
+## Contact & Links
+
+- [Github Profile](https://github.com/veotaar)
+- [Linkedin Profile](https://www.linkedin.com/in/yalcincan)
