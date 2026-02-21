@@ -24,6 +24,13 @@ const { title, description } = Astro.props;
 		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />
 		<title>{title}</title>
+		<script>
+      import { configure } from "onedollarstats";
+
+      if (typeof window !== "undefined") {
+        configure({ hostname: "ulus.uk", devmode: false });
+      }
+    </script>
 	</head>
 	<body>
 		<slot />
