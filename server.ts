@@ -9,6 +9,10 @@ Bun.serve({
 		const url = new URL(req.url);
 		const pathname = url.pathname;
 
+		if (pathname === "/healthz") {
+			return new Response("ok", { status: 200 });
+		}
+
 		// Resolve path to file
 		let filePath = join(DIST_DIR, pathname);
 

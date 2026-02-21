@@ -22,4 +22,7 @@ COPY --from=builder /app/server.ts ./
 
 EXPOSE 4321
 
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+  CMD bun -e "const r = await fetch('http://localhost:4321/healthz'); process.exit(r.ok ? 0 : 1)"
+
 CMD ["bun", "server.ts"]
