@@ -9,7 +9,7 @@ const { name, resumePath } = Astro.props;
 
 <header class="header">
 	<nav class="header__nav container">
-		<a href="#top" class="header__logo">{name}</a>
+		<a href="/" class="header__logo" id="header-logo">{name}</a>
 		<a href={resumePath} target="_blank" rel="noopener noreferrer" class="btn btn-outline header__resume" data-track="resume-click">
 			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 				<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -54,3 +54,13 @@ const { name, resumePath } = Astro.props;
 		flex-shrink: 0;
 	}
 </style>
+
+<script>
+	const logo = document.getElementById("header-logo");
+	logo?.addEventListener("click", (e) => {
+		if (window.location.pathname === "/") {
+			e.preventDefault();
+			window.scrollTo({ top: 0, behavior: "smooth" });
+		}
+	});
+</script>
