@@ -5,8 +5,15 @@ User-agent: ClaudeBot
 User-agent: CCBot
 User-agent: anthropic-ai
 User-agent: Claude-Web
+User-agent: Bytespider
+User-agent: AhrefsBot
+User-agent: Applebot-Extended
+User-agent: FacebookBot
+User-agent: Omgilibot
+User-agent: YouBot
 Disallow: /
 
 User-agent: Googlebot
 User-agent: Bingbot
 Allow: /
+Disallow:
