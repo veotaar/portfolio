@@ -97,11 +97,24 @@ const isAboutPage = Astro.url.pathname === "/about";
 </style>
 
 <script>
-	const logo = document.getElementById("header-logo");
-	logo?.addEventListener("click", (e) => {
-		if (window.location.pathname === "/") {
-			e.preventDefault();
+	if (!document.documentElement.dataset.headerLogoBound) {
+		document.addEventListener("click", (clickEvent) => {
+			const target = clickEvent.target;
+
+			if (!(target instanceof Element)) {
+				return;
+			}
+
+			const logo = target.closest("#header-logo");
+
+			if (!logo || window.location.pathname !== "/") {
+				return;
+			}
+
+			clickEvent.preventDefault();
 			window.scrollTo({ top: 0, behavior: "smooth" });
-		}
-	});
+		});
+
+		document.documentElement.dataset.headerLogoBound = "true";
+	}
 </script>

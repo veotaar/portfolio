@@ -71,23 +71,6 @@ const {
 
 	<ImageCarousel images={images} projectName={name} aboveFold={aboveFold} />
 </article>
-
-<script>
-	import { event } from "onedollarstats";
-
-	document.querySelectorAll<HTMLElement>("[data-track]").forEach((el) => {
-		el.addEventListener("click", () => {
-			const trackEvent = el.dataset.track!;
-			if (el.dataset.project) {
-				const project = el.dataset.project.toLowerCase().replace(/\s+/g, "-");
-				event(trackEvent, `/${project}`, { project });
-			} else {
-				event(trackEvent);
-			}
-		});
-	});
-</script>
-
 <style>
 	.project-card {
 		background-color: var(--bg-surface);

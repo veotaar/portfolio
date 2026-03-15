@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 
 interface Props {
@@ -14,6 +15,7 @@ const { title, description } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<ClientRouter />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
@@ -25,10 +27,42 @@ const { title, description } = Astro.props;
 		<meta property="og:type" content="website" />
 		<title>{title}</title>
 		<script>
-      import { configure } from "onedollarstats";
+      import { configure, event } from "onedollarstats";
 
       if (typeof window !== "undefined") {
         configure({ hostname: "ulus.uk", devmode: false });
+
+				if (!document.documentElement.dataset.portfolioTrackingBound) {
+					document.addEventListener("click", (clickEvent) => {
+						const target = clickEvent.target;
+
+						if (!(target instanceof Element)) {
+							return;
+						}
+
+						const trackedElement = target.closest<HTMLElement>("[data-track]");
+
+						if (!trackedElement) {
+							return;
+						}
+
+						const trackEvent = trackedElement.dataset.track;
+
+						if (!trackEvent) {
+							return;
+						}
+
+						if (trackedElement.dataset.project) {
+							const project = trackedElement.dataset.project.toLowerCase().replace(/\s+/g, "-");
+							event(trackEvent, `/${project}`, { project });
+							return;
+						}
+
+						event(trackEvent);
+					});
+
+					document.documentElement.dataset.portfolioTrackingBound = "true";
+				}
       }
     </script>
 	</head>
