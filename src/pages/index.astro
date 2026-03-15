@@ -1,24 +1,4 @@
 ---
-// ============================================================
-// PROJECT SCREENSHOTS
-// ============================================================
-import p1s1 from "../assets/projects/project-1/01.png";
-import p1s2 from "../assets/projects/project-1/02.png";
-import p1s3 from "../assets/projects/project-1/03.png";
-import p1s4 from "../assets/projects/project-1/04.png";
-import p1s5 from "../assets/projects/project-1/05.png";
-import p1s6 from "../assets/projects/project-1/06.png";
-import p1s7 from "../assets/projects/project-1/07.png";
-import p1s8 from "../assets/projects/project-1/08.png";
-import p2s1 from "../assets/projects/project-2/01.png";
-import p2s2 from "../assets/projects/project-2/02.png";
-import p2s3 from "../assets/projects/project-2/03.png";
-import p3s1 from "../assets/projects/project-3/01.png";
-import p3s2 from "../assets/projects/project-3/02.png";
-import p3s3 from "../assets/projects/project-3/03.png";
-import p3s4 from "../assets/projects/project-3/04.png";
-import p3s5 from "../assets/projects/project-3/06.png";
-import p3s6 from "../assets/projects/project-3/07.png";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
@@ -27,11 +7,29 @@ import ProjectCard from "../components/ProjectCard.astro";
 import { otherProjects, projects, siteData } from "../data/portfolio";
 import Layout from "../layouts/Layout.astro";
 
-const project1Images = [p1s1, p1s2, p1s3, p1s4, p1s5, p1s6, p1s7, p1s8];
-const project2Images = [p2s1, p2s2, p2s3];
-const project3Images = [p3s1, p3s2, p3s3, p3s4, p3s5, p3s6];
+const screenshotModules = import.meta.glob(
+	"../assets/projects/*/*.{png,jpg,jpeg,webp,avif}",
+	{ eager: true, import: "default" },
+) as Record<string, ImageMetadata>;
 
-const projectImages = [project1Images, project2Images, project3Images];
+const projectImages = Object.entries(screenshotModules).reduce<
+	Record<string, ImageMetadata[]>
+>((imagesByProject, [path, image]) => {
+	const segments = path.split("/");
+	const projectId = segments.at(-2);
+
+	if (!projectId) {
+		return imagesByProject;
+	}
+
+	imagesByProject[projectId] ??= [];
+	imagesByProject[projectId].push(image);
+	imagesByProject[projectId].sort((left, right) =>
+		left.src.localeCompare(right.src),
+	);
+
+	return imagesByProject;
+}, {});
 ---
 
 <Layout title={siteData.title} description={siteData.description}>
@@ -56,9 +54,11 @@ const projectImages = [project1Images, project2Images, project3Images];
 							tags={project.tags}
 							description={project.description}
 							details={project.details}
-							images={projectImages[i] ?? []}
+							images={projectImages[project.id] ?? []}
 							githubUrl={project.githubUrl}
-							liveUrl={project.liveUrl}						aboveFold={i === 0}						/>
+							liveUrl={project.liveUrl}
+							aboveFold={i === 0}
+						/>
 					))}
 				</div>
 			</div>

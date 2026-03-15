@@ -1,0 +1,110 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { siteData } from "../data/portfolio";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+	title={`About | ${siteData.name}`}
+	description="About Yalçıncan Ulus, his approach to building products, and what he enjoys working on."
+>
+	<Header name={siteData.name} resumePath={siteData.resumePath} />
+
+	<main class="about section">
+		<div class="container about__container">
+			<p class="about__eyebrow">About</p>
+			<!-- <h1 class="about__title">Title</h1> -->
+			<div class="about__card">
+				<p>
+          Hello! 👋
+        </p>
+
+        <p>
+					I am a full-stack web developer based in Türkiye, specializing in the broader TypeScript ecosystem.
+				</p>
+
+				<p>
+					My passion lies in building complex, moving pieces into cohesive, high-performance applications.
+           I focus on architecting systems that require real-time interactions, robust background job queues, time-series data analytics, and microservice-style monorepos. I love taking a project from a blank canvas all the way to a fully orchestrated, Dockerized deployment.
+				</p>
+
+				<p>
+					In today’s rapidly evolving development landscape, I consider myself a foundational engineer equipped with modern tools. My work is grounded in a deep understanding of underlying mechanics; whether that means optimizing PostgreSQL queries, designing secure APIs, or configuring production deployments. Every line of code I ship is intentional, and I build with a clear understanding of exactly how my systems operate under the hood.
+				</p>
+
+				<p>
+					At the same time, I stay current with the latest developer tooling and can incorporate AI into my routine as a productivity multiplier. I use these tools to speed up iteration cycles, generate boilerplate, and assist in rapid debugging. Offloading the routine keystrokes allows me to drastically reduce development time and dedicate my full attention to what truly matters: architectural decisions, data modeling, and ensuring the codebase remains clean and scalable.
+				</p>
+
+        <p>
+          If you're looking for an engineer who combines a strong grasp of software fundamentals with the velocity of modern development practices, you're in the right place.
+        </p>
+
+			</div>
+		</div>
+	</main>
+
+	<Footer
+		email={siteData.email}
+		githubUrl={siteData.githubUrl}
+		linkedinUrl={siteData.linkedinUrl}
+		resumePath={siteData.resumePath}
+		name={siteData.name}
+	/>
+</Layout>
+
+<style>
+	.about {
+		padding-top: calc(var(--header-height) + 4rem);
+	}
+
+	.about__container {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.about__eyebrow {
+		font-size: 0.8125rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--text-muted);
+	}
+
+	.about__title {
+		max-width: 14ch;
+		font-size: clamp(2.25rem, 6vw, 4.25rem);
+		line-height: 1.05;
+		letter-spacing: -0.04em;
+	}
+
+	.about__card {
+		display: grid;
+		gap: 1.25rem;
+		padding: 1.75rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-lg);
+		background:
+			radial-gradient(circle at top right, rgba(59, 130, 246, 0.14), transparent 24rem),
+			var(--bg-surface);
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+	}
+
+	.about__card p {
+		max-width: 68ch;
+		color: var(--text-muted);
+		font-size: 1rem;
+		line-height: 1.8;
+	}
+
+	@media (max-width: 640px) {
+		.about {
+			padding-top: calc(var(--header-height) + 2.5rem);
+		}
+
+		.about__card {
+			padding: 1.25rem;
+		}
+	}
+</style>

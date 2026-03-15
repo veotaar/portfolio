@@ -12,6 +12,7 @@ export const siteData = {
 
 /** Main project type */
 export interface Project {
+	id: string;
 	name: string;
 	tags: string[];
 	description: string;
@@ -31,10 +32,46 @@ export interface OtherProject {
 }
 
 // ============================================================
-// MAIN PROJECTS (3 featured projects with screenshots)
+// MAIN PROJECTS (3-4 featured projects with screenshots)
 // ============================================================
 export const projects: Project[] = [
 	{
+		id: "project-4",
+		name: "Automated Price Tracking Platform",
+		tags: [
+			"TypeScript",
+			"Turborepo",
+			"Bun",
+			"React",
+			"PostgreSQL",
+			"TimescaleDB",
+			"Drizzle ORM",
+			"Redis",
+			"BullMQ",
+			"Better Auth",
+			"TanStack Router",
+			"Playwright",
+			"Docker",
+		],
+		description:
+			"Full-stack price tracking app built as a Turborepo monorepo. Tracks grocery prices across 20+ sites and 10+ countries with time-series analytics and a public comparison frontend.",
+		details: [
+			"Scrapes prices from 27+ grocery sites across 19 countries using Playwright (browser rendering) and Cheerio (fetch) strategies, selectable per site",
+			"TimescaleDB hypertables with time_bucket and time_bucket_gapfill queries for historical price trend charts",
+			"Daily EUR-based FX rates fetched via BullMQ workers; all prices normalized to EUR for cross-country comparison",
+			"Pack-size normalization via per-item factors and per-site price divisors for fair cross-market comparisons",
+			"Four apps in one monorepo: internal API + admin dashboard, and a public API + storefront for product price comparison",
+			"Recharts-powered line and bar charts on the public frontend for visualizing lowest price over time per country",
+			"Bull Board UI for monitoring and managing scheduled scraping and exchange rate jobs",
+			"Better Auth for admin authentication; public API is fully read-only with no auth required",
+			"Drizzle ORM for type-safe PostgreSQL queries; Redis for BullMQ job queues and API response caching",
+			"Containerized with Docker Compose",
+		],
+		githubUrl: "https://github.com/veotaar/price-tracking-app",
+		liveUrl: "https://compare.ulus.uk/",
+	},
+	{
+		id: "project-1",
 		name: "Social Media Platform",
 		tags: [
 			"TypeScript",
@@ -68,6 +105,7 @@ export const projects: Project[] = [
 		liveUrl: "https://social.ulus.uk/",
 	},
 	{
+		id: "project-2",
 		name: "Messaging App",
 		tags: [
 			"TypeScript",
@@ -95,6 +133,7 @@ export const projects: Project[] = [
 		liveUrl: "https://messenger.ulus.uk/",
 	},
 	{
+		id: "project-3",
 		name: "Blog Platform",
 		tags: [
 			"TypeScript",
