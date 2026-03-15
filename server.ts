@@ -16,18 +16,21 @@ function cacheControlFor(filePath: string): string {
 async function resolveFile(
 	pathname: string,
 ): Promise<{ file: ReturnType<typeof Bun.file>; path: string } | null> {
-	let filePath = join(DIST_DIR, pathname);
+	const candidatePaths = [join(DIST_DIR, pathname)];
 
 	if (pathname.endsWith("/")) {
-		filePath = join(filePath, "index.html");
+		candidatePaths.push(join(DIST_DIR, pathname, "index.html"));
+	} else {
+		candidatePaths.push(join(DIST_DIR, pathname, "index.html"));
+		candidatePaths.push(`${join(DIST_DIR, pathname)}.html`);
 	}
 
-	let file = Bun.file(filePath);
-	if (await file.exists()) return { file, path: filePath };
-
-	const htmlPath = `${filePath}.html`;
-	file = Bun.file(htmlPath);
-	if (await file.exists()) return { file, path: htmlPath };
+	for (const candidatePath of candidatePaths) {
+		const file = Bun.file(candidatePath);
+		if (await file.exists()) {
+			return { file, path: candidatePath };
+		}
+	}
 
 	return null;
 }
