@@ -52,6 +52,8 @@ export const projects: Project[] = [
 			"TanStack Router",
 			"Playwright",
 			"Docker",
+			"Typesense (Elasticsearch/Algolia alternative)",
+			"Sentry",
 		],
 		description:
 			"Full-stack price tracking app built as a Turborepo monorepo. Tracks grocery prices across 20+ sites and 10+ countries with time-series analytics and a public comparison frontend.",
@@ -65,6 +67,8 @@ export const projects: Project[] = [
 			"Bull Board UI for monitoring and managing scheduled scraping and exchange rate jobs",
 			"Better Auth for admin authentication; public API is fully read-only with no auth required",
 			"Drizzle ORM for type-safe PostgreSQL queries; Redis for BullMQ job queues and API response caching",
+			"Full-text search with Typesense (Elasticsearch / Algolia alternative) on the admin dashboard",
+			"Sentry for error tracking and log monitoring",
 			"Containerized with Docker Compose",
 		],
 		githubUrl: "https://github.com/veotaar/price-tracking-app",
