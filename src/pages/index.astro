@@ -46,7 +46,7 @@ const projectImages = Object.entries(screenshotModules).reduce<
 		<section class="projects section" id="projects">
 			<div class="container">
 				<h2 class="projects__title">Projects</h2>
-				<p class="projects__subtitle"><strong>Guest logins</strong> available on live demos.</p>
+				<p class="projects__subtitle">One-click <strong>guest logins</strong> available for quick testing (where applicable).</p>
 				<div class="projects__grid">
 					{projects.map((project, i) => (
 						<ProjectCard
@@ -92,7 +92,6 @@ const projectImages = Object.entries(screenshotModules).reduce<
 	.projects__grid {
 		display: flex;
 		flex-direction: column;
-		gap: 2rem;
 		margin-top: 2rem;
 	}
 </style>

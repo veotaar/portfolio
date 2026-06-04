@@ -11,6 +11,7 @@ html {
 	color-scheme: dark;
 	scroll-behavior: smooth;
 	-webkit-text-size-adjust: 100%;
+	scrollbar-gutter: stable;
 }
 
 body {
@@ -68,7 +69,7 @@ button {
 	--radius-lg: 0.75rem;
 	--max-width: 52rem;
 	--header-height: 3.5rem;
-	--section-gap: 5rem;
+	--section-gap: 3rem;
 }
 
 /* ===== Utility Classes ===== */
