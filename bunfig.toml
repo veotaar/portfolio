@@ -1,2 +1,7 @@
 [install]
 minimumReleaseAge = 259200 # seconds (3 days)
+
+minimumReleaseAgeExcludes = ["astro"]
+
+[install.security]
+scanner = "@socketsecurity/bun-security-scanner"
