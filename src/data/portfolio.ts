@@ -5,7 +5,7 @@ export const siteData = {
 	description: "Full-stack developer based in Türkiye",
 	email:
 		"&#121;&#97;&#108;&#99;&#105;&#110;&#99;&#97;&#110;&#46;&#117;&#108;&#117;&#115;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;",
-	githubUrl: "https://github.com/veotaar",
+	githubUrl: "https://github.com/yalcincanulus",
 	linkedinUrl: "https://www.linkedin.com/in/yalcincan/",
 	resumePath: "/resume.pdf",
 };
@@ -71,7 +71,7 @@ export const projects: Project[] = [
 			"Sentry for error tracking and log monitoring",
 			"Containerized with Docker Compose",
 		],
-		githubUrl: "https://github.com/veotaar/price-tracking-app",
+		githubUrl: "https://github.com/yalcincanulus/price-tracking-app",
 		liveUrl: "https://compare.ulus.uk/",
 	},
 	{
@@ -105,7 +105,7 @@ export const projects: Project[] = [
 			"Redis caching for profiles, block lists, settings and session storage",
 			"Fully containerized with Docker Compose. Multi-stage builds using Turborepo prune",
 		],
-		githubUrl: "https://github.com/veotaar/social",
+		githubUrl: "https://github.com/yalcincanulus/social",
 		liveUrl: "https://social.ulus.uk/",
 	},
 	{
@@ -133,7 +133,7 @@ export const projects: Project[] = [
 			"Integration tests with Bun test runner, Supertest, and mongodb-memory-server",
 			"Frontend built with TanStack Router, TanStack Query, React Hook Form + Zod, and shadcn/ui",
 		],
-		githubUrl: "https://github.com/veotaar/messaging-app-api",
+		githubUrl: "https://github.com/yalcincanulus/messaging-app-api",
 		liveUrl: "https://messenger.ulus.uk/",
 	},
 	{
@@ -158,7 +158,7 @@ export const projects: Project[] = [
 			"Both frontends built with React, TanStack Router, TanStack Query, and Zod",
 			"CI/CD pipeline with Docker and GitHub Actions for deployment",
 		],
-		githubUrl: "https://github.com/veotaar/blog-api",
+		githubUrl: "https://github.com/yalcincanulus/blog-api",
 		liveUrl: "https://blog.ulus.uk",
 	},
 ];
@@ -179,7 +179,7 @@ export const otherProjects: OtherProject[] = [
 			"D3.js and canvas used to paint incorrect guesses on world map",
 			"Over 1400 games played and 27.000+ guesses made by players",
 		],
-		githubUrl: "https://github.com/veotaar/guess-the-country-prototype",
+		githubUrl: "https://github.com/yalcincanulus/guess-the-country-prototype",
 	},
 	{
 		name: "GeoGuessr Account Status Checker",
@@ -193,7 +193,7 @@ export const otherProjects: OtherProject[] = [
 			"Users get notified in Discord when monitored accounts get banned",
 			"SQLite used to store monitored accounts and their status history",
 		],
-		githubUrl: "https://github.com/veotaar/geo-polis",
+		githubUrl: "https://github.com/yalcincanulus/geo-polis",
 	},
 	// {
 	// 	name: "Other Project Three",
